@@ -64,7 +64,7 @@
       "^.+\\.ts$": "ts-jest"
     },
     "testMatch": [
-      "**/test/*.ts"
+      "**/test/**/*.ts"
     ],
     "testURL": "http://localhost/"
   },
