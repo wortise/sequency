@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
+/** @type {webpack.Configuration} */
 module.exports = {
     entry: {
         'sequency': './src/Sequence.ts',
@@ -22,12 +23,16 @@ module.exports = {
         rules: [{
             test: /\.ts$/,
             loader: 'ts-loader',
+            options: {
+                transpileOnly: true,
+                configFile: 'tsconfig.json'
+            },
             exclude: /node_modules/
         }]
     },
     optimization: {
         minimize: true,
-        minimizer: [new UglifyJsPlugin({
+        minimizer: [new TerserPlugin({
             include: /\.min\.js$/
         })]
     }
