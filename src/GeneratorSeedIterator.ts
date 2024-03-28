@@ -1,5 +1,5 @@
 export default class GeneratorSeedIterator<T> implements Iterator<T> {
-    private prevItem: T;
+    private prevItem: T | null = null;
 
     constructor(private readonly seed: T,
                 private readonly nextFunction: (value: T) => T | null | undefined) {
@@ -12,7 +12,7 @@ export default class GeneratorSeedIterator<T> implements Iterator<T> {
         }
         const nextItem = this.nextFunction(this.prevItem);
         if (nextItem == null) {
-            return {done: true, value: undefined as any};
+            return {done: true, value: undefined};
         }
         this.prevItem = nextItem;
         return {
