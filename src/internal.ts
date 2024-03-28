@@ -26,10 +26,13 @@ export function asSelector<T, K extends any>(keyOrSelector: ((item: T) => K) | k
         : (item: T) => item?.[keyOrSelector] as K;
 }
 
-export function applyMixins(derivedCtor: any, baseCtors: any[]) {
+export function applyMixins(derivedCtor: ({new(...args: any[]): any}), baseCtors: ({new(...args: any[]): any})[]) {
     baseCtors.forEach(baseCtor => {
         Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-            derivedCtor.prototype[name] = baseCtor.prototype[name];
+            const descriptor = Reflect.getOwnPropertyDescriptor(baseCtor.prototype, name);
+            if (descriptor != null) {
+                Reflect.defineProperty(derivedCtor.prototype, name, descriptor);
+            }
         });
     });
 }
