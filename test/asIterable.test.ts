@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("asIterable", () => {
     it("should return an iterable object conforming to the iterator-protocol", () => {

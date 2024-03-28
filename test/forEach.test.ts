@@ -1,12 +1,11 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("forEach", () => {
     it("should call action for each element", () => {
-        const array: Array<number> = [];
+        const array: number[] = [];
         sequenceOf(1, 2, 3)
             .forEach(it => array.push(it));
-        expect(array[0]).toBe(1);
-        expect(array[1]).toBe(2);
-        expect(array[2]).toBe(3);
+
+        expect(array).toEqual([1, 2, 3]);
     });
 });

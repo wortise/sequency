@@ -1,10 +1,11 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("merge", () => {
     it("should merge both sequences", () => {
         const result = sequenceOf({id: 1, val: "a"}, {id: 2, val: "b"}, {id: 3, val: "c"})
             .merge(sequenceOf({id: 2, val: "bb"}), it => it.id)
             .toArray();
+
         expect(result).toEqual([{id: 1, val: "a"}, {id: 2, val: "bb"}, {id: 3, val: "c"}]);
     });
 
@@ -12,6 +13,7 @@ describe("merge", () => {
         const result = sequenceOf({id: 1, val: "a"}, {id: 2, val: "b"}, {id: 3, val: "c"})
             .merge([{id: 2, val: "bb"}], it => it.id)
             .toArray();
+
         expect(result).toEqual([{id: 1, val: "a"}, {id: 2, val: "bb"}, {id: 3, val: "c"}]);
     });
 
@@ -19,6 +21,7 @@ describe("merge", () => {
         const result = sequenceOf({id: 1, val: "a"}, {id: 2, val: "b"}, {id: 3, val: "c"})
             .merge(sequenceOf({id: 2, val: "bb"}, {id: 4, val: "d"}), it => it.id)
             .toArray();
+
         expect(result).toEqual([{id: 1, val: "a"}, {id: 2, val: "bb"}, {id: 3, val: "c"}, {id: 4, val: "d"}]);
     });
 
@@ -26,6 +29,7 @@ describe("merge", () => {
         const result = sequenceOf({id: 1, val: "a"}, {id: 2, val: "b"}, {id: 3, val: "c"})
             .merge(sequenceOf({id: 2, val: "bb"}, {id: 4, val: "d"}), it => it.id, true)
             .toArray();
+
         expect(result).toEqual([{id: 4, val: "d"}, {id: 1, val: "a"}, {id: 2, val: "bb"}, {id: 3, val: "c"}]);
     });
 });

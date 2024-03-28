@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("sortedBy", () => {
     it("should sort by the given key descending", () => {
@@ -11,10 +11,6 @@ describe("sortedBy", () => {
             .sortedByDescending(it => it.a)
             .toArray();
 
-        expect(array.length).toBe(4);
-        expect(array[0]).toBe(a23);
-        expect(array[1]).toBe(a4);
-        expect(array[2]).toBe(a3);
-        expect(array[3]).toBe(a1);
+        expect(array).toEqual([a23, a4, a3, a1]);
     });
 });

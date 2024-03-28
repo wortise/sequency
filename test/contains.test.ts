@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("contains", () => {
     it("should contain element", () => {

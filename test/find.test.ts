@@ -1,10 +1,11 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("find", () => {
     it("should return first element of sequence", () => {
         const result = sequenceOf(1, 2, 3)
             .filter(it => it > 2)
             .find();
+
         expect(result).toBe(3);
     });
 
@@ -12,12 +13,14 @@ describe("find", () => {
         const result = sequenceOf(1, 2, 3)
             .filter(it => it > 3)
             .find();
+
         expect(result).toBeNull();
     });
 
     it("should return first element matching predicate", () => {
         const result = sequenceOf(1, 2, 3)
             .find(it => it > 2);
+
         expect(result).toBe(3);
     });
 });

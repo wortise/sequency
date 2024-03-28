@@ -1,4 +1,4 @@
-import Sequence, {extendSequence, sequenceOf} from "../src/Sequence";
+import {extendSequence, sequenceOf, Sequence} from "../src/sequency";
 
 class GreetAll {
     greetAll(this: Sequence<string>): string {
@@ -7,7 +7,7 @@ class GreetAll {
     }
 }
 
-declare module "../src/Sequence" {
+declare module "../src/sequency" {
     export default interface Sequence<T> extends GreetAll {
     }
 }
@@ -17,6 +17,7 @@ describe("extendSequence", () => {
         extendSequence(GreetAll);
         const names = sequenceOf("John", "Bob", "Steve");
         const greetings = names.greetAll();
+
         expect(greetings).toBe("Hello John, Bob, Steve !");
     });
 });

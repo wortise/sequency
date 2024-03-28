@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("associateBy", () => {
     it("should associate map by keySelector", () => {
@@ -9,10 +9,13 @@ describe("associateBy", () => {
         const map = sequenceOf(a, b, c)
             .associateBy(it => it.k);
 
-        expect(map.size).toBe(3);
-        expect(map.get(1)).toBe(a);
-        expect(map.get(2)).toBe(b);
-        expect(map.get(3)).toBe(c);
+        expect(map).toEqual(
+            new Map([
+                [1, a],
+                [2, b],
+                [3, c]
+            ])
+        )
     });
 
     it("should associate map by key", () => {
@@ -23,10 +26,13 @@ describe("associateBy", () => {
         const map = sequenceOf(a, b, c)
             .associateBy("k");
 
-        expect(map.size).toBe(3);
-        expect(map.get(1)).toBe(a);
-        expect(map.get(2)).toBe(b);
-        expect(map.get(3)).toBe(c);
+        expect(map).toEqual(
+            new Map([
+                [1, a],
+                [2, b],
+                [3, c]
+            ])
+        )
     });
 
     it("should associate map by keySelector and valueTransformer", () => {
@@ -40,10 +46,13 @@ describe("associateBy", () => {
                 it => it.v
             );
 
-        expect(map.size).toBe(3);
-        expect(map.get(1)).toBe(11);
-        expect(map.get(2)).toBe(22);
-        expect(map.get(3)).toBe(33);
+        expect(map).toEqual(
+            new Map([
+                [1, 11],
+                [2, 22],
+                [3, 33]
+            ])
+        )
     });
 
     it("should associate map by key and valueTransformer", () => {
@@ -57,10 +66,13 @@ describe("associateBy", () => {
                 it => it.v
             );
 
-        expect(map.size).toBe(3);
-        expect(map.get(1)).toBe(11);
-        expect(map.get(2)).toBe(22);
-        expect(map.get(3)).toBe(33);
+        expect(map).toEqual(
+            new Map([
+                [1, 11],
+                [2, 22],
+                [3, 33]
+            ])
+        )
     });
 
     it("latest entries should win in case of duplicates", () => {
@@ -75,9 +87,12 @@ describe("associateBy", () => {
                 it => it.v
             );
 
-        expect(map.size).toBe(3);
-        expect(map.get(1)).toBe(11);
-        expect(map.get(2)).toBe(222);
-        expect(map.get(3)).toBe(33);
+        expect(map).toEqual(
+            new Map([
+                [1, 11],
+                [2, 222],
+                [3, 33]
+            ])
+        )
     });
 });

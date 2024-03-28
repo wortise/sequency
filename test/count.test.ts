@@ -1,7 +1,6 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("count", () => {
-
     it("should count results", () => {
         const num = sequenceOf(1, 2, 3).count();
         expect(num).toBe(3);
@@ -12,5 +11,4 @@ describe("count", () => {
             .count(it => it > 1);
         expect(num).toBe(2);
     });
-
 });

@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("filter", () => {
     it("should filter elements", () => {
@@ -6,8 +6,6 @@ describe("filter", () => {
             .filter(it => it > 1)
             .toArray();
 
-        expect(array.length).toBe(2);
-        expect(array[0]).toBe(2);
-        expect(array[1]).toBe(3);
+        expect(array).toEqual([2, 3]);
     });
 });

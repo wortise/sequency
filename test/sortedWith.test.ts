@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("sortedWith", () => {
     it("should sort numbers by given comparator", () => {
@@ -13,11 +13,7 @@ describe("sortedWith", () => {
                 return 0;
             })
             .toArray();
-        expect(array.length).toBe(5);
-        expect(array[0]).toBe(5);
-        expect(array[1]).toBe(4);
-        expect(array[2]).toBe(3);
-        expect(array[3]).toBe(2);
-        expect(array[4]).toBe(1);
+
+        expect(array).toEqual([5, 4, 3, 2, 1]);
     });
 });

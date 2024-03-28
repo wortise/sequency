@@ -1,4 +1,4 @@
-import {sequenceOf} from "../src/Sequence";
+import {sequenceOf} from "../src/sequency";
 
 describe("sequenceOf", () => {
     it("filter-map-toArray", () => {
@@ -7,8 +7,6 @@ describe("sequenceOf", () => {
             .map(it => `num ${it}`)
             .toArray();
 
-        expect(array.length).toBe(2);
-        expect(array[0]).toBe("num 2");
-        expect(array[1]).toBe("num 3");
+        expect(array).toEqual(["num 2", "num 3"]);
     });
 });

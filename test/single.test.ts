@@ -1,10 +1,10 @@
-import {emptySequence, sequenceOf} from "../src/Sequence";
-import single from "../src/single";
+import {emptySequence, sequenceOf} from "../src/sequency";
 
 describe("single", () => {
     it("should return single element", () => {
         const result = sequenceOf(23)
             .single();
+
         expect(result).toBe(23);
     });
 
@@ -23,6 +23,7 @@ describe("single", () => {
     it("should evaluate predicate and return single element", () => {
         const result = sequenceOf(1, 2, 3)
             .single(it => it > 2);
+
         expect(result).toBe(3);
     });
 

@@ -1,4 +1,4 @@
-import Sequence, {emptySequence, sequenceOf} from "../src/Sequence";
+import {emptySequence, sequenceOf, Sequence} from "../src/sequency";
 
 describe("average", () => {
     it("should calculate average", () => {

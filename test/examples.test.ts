@@ -1,11 +1,11 @@
-import {asSequence, generateSequence, sequenceOf} from "../src/Sequence";
+import {asSequence, generateSequence, sequenceOf} from "../src/sequency";
 
 describe("examples", () => {
-
     it("should be beer-o-clock", () => {
         const result = sequenceOf("🍻", "🍻")
-            .flatMap(it => sequenceOf("🍺", "🍺"))
+            .flatMap(_it => sequenceOf("🍺", "🍺"))
             .toArray();
+
         expect(result).toEqual(["🍺", "🍺", "🍺", "🍺"]);
     });
 
@@ -15,12 +15,14 @@ describe("examples", () => {
                 .map(([a, _]) => a)
                 .take(10)
                 .toArray();
+
         expect(nums).toEqual([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
     });
 
     it("should iterate over chars of the given string", () => {
         const result = asSequence("abc")
             .toArray();
+
         expect(result).toEqual(["a", "b", "c"]);
     });
 
@@ -35,7 +37,7 @@ describe("examples", () => {
         const result = asSequence(generator())
             .take(3)
             .toArray();
+
         expect(result).toEqual([0, 1, 2]);
     });
-
 });
