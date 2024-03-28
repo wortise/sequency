@@ -11,7 +11,7 @@ describe("asSequence", () => {
     });
 
     it("should create sequence from object keys", () => {
-        const keys = (Object as any).keys({"a": 1, "b": 2, "c": 3});
+        const keys = Object.keys({"a": 1, "b": 2, "c": 3});
         const array = asSequence(keys)
             .toArray();
 
@@ -19,7 +19,7 @@ describe("asSequence", () => {
     });
 
     it("should create sequence from object values", () => {
-        const values = (Object as any).values({"a": 1, "b": 2, "c": 3});
+        const values = Object.values({"a": 1, "b": 2, "c": 3});
         const array = asSequence(values)
             .toArray();
 
@@ -27,14 +27,19 @@ describe("asSequence", () => {
     });
 
     it("should create sequence from set", () => {
-        const array = asSequence(new Set([1, 2, 3]))
+        const set = new Set<number>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+
+        const array = asSequence(set)
             .toArray();
 
         expect(array).toEqual([1, 2, 3]);
     });
 
     it("should create sequence from map", () => {
-        const map = new Map();
+        const map = new Map<string, number>();
         map.set("a", 1);
         map.set("b", 2);
         map.set("c", 3);
