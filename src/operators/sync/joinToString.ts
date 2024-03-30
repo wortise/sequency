@@ -1,12 +1,12 @@
 import {Sequence} from "../../sequency";
+import {BaseJoinToStringConfig} from "../../BaseJoinToStringConfig";
 
-export interface JoinConfig<T> {
-    value?: string;
-    separator?: string;
-    prefix?: string;
-    postfix?: string;
-    limit?: number;
-    truncated?: string;
+export interface JoinConfig<T> extends BaseJoinToStringConfig {
+    /**
+     * Transform function
+     * @param value Sequence element
+     * @returns {string} String representation
+     */
     transform?: (value: T) => string;
 }
 
