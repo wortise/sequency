@@ -1,3 +1,4 @@
+import {asAsyncIterator} from "../../internal";
 import {asyncSequenceOf, createAsyncSequence, isAsyncSequence, AsyncSequence} from "../../sequency";
 
 class MergeIterator<T, S> implements AsyncIterator<T> {
@@ -86,8 +87,17 @@ export class Merge {
      * @param prependNewValues
      * @returns {AsyncSequence<T>}
      */
-    merge<T, S>(this: AsyncSequence<T>, other: AsyncSequence<T> | AsyncIterable<T>, selector: (value: T) => Promise<S> | S, prependNewValues: boolean = false): AsyncSequence<T> {
-        return createAsyncSequence(new MergeIterator(this.iterator, isAsyncSequence(other) ? other.iterator : other[Symbol.asyncIterator](), selector, prependNewValues));
+    merge<T, S>(this: AsyncSequence<T>, other: AsyncSequence<T> | AsyncIterable<T> | Iterable<T>, selector: (value: T) => Promise<S> | S, prependNewValues: boolean = false): AsyncSequence<T> {
+        return createAsyncSequence(new MergeIterator(
+            this.iterator,
+            isAsyncSequence(other)
+                ? other.iterator
+                : (other as AsyncIterable<T>)[Symbol.asyncIterator]
+                    ? (other as AsyncIterable<T>)[Symbol.asyncIterator]()
+                    : asAsyncIterator((other as Iterable<T>)[Symbol.iterator]()),
+            selector,
+            prependNewValues
+        ));
     }
 
 }

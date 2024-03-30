@@ -87,7 +87,12 @@ export class Merge {
      * @returns {Sequence<T>}
      */
     merge<T, S>(this: Sequence<T>, other: Sequence<T> | Iterable<T>, selector: (value: T) => S, prependNewValues: boolean = false): Sequence<T> {
-        return createSequence(new MergeIterator(this.iterator, isSequence(other) ? other.iterator : other[Symbol.iterator](), selector, prependNewValues));
+        return createSequence(new MergeIterator(
+            this.iterator,
+            isSequence(other) ? other.iterator : other[Symbol.iterator](),
+            selector,
+            prependNewValues
+        ));
     }
 
 }
