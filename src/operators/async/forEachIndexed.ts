@@ -8,8 +8,8 @@ export class ForEachIndexed {
      *
      * @param {(index: number, value: T) => Promise<void> | void} action
      */
-    async forEachIndexed<T>(this: AsyncSequence<T>, action: (index: number, value: T) => Promise<void> | void) {
-        this.withIndex()
+    async forEachIndexed<T>(this: AsyncSequence<T>, action: (index: number, value: T) => Promise<unknown> | unknown) {
+        await this.withIndex()
             .forEach(async it => await action(it.index, it.value));
     }
 

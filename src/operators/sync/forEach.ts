@@ -7,7 +7,7 @@ export class ForEach {
      *
      * @param {(item: T) => void} action
      */
-    forEach<T>(this: Sequence<T>, action: (item: T) => void) {
+    forEach<T>(this: Sequence<T>, action: (item: T) => unknown) {
         for (let item = this.iterator.next(); !item.done; item = this.iterator.next()) {
             action(item.value);
         }

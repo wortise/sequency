@@ -7,7 +7,7 @@ export class ForEach {
      *
      * @param {(item: T) => Promise<void> | void} action
      */
-    async forEach<T>(this: AsyncSequence<T>, action: (item: T) => Promise<void> | void) {
+    async forEach<T>(this: AsyncSequence<T>, action: (item: T) => Promise<unknown> | unknown) {
         for (let item = await this.iterator.next(); !item.done; item = await this.iterator.next()) {
             await action(item.value);
         }

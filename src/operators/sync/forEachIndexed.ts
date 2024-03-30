@@ -8,7 +8,7 @@ export class ForEachIndexed {
      *
      * @param {(index: number, value: T) => void} action
      */
-    forEachIndexed<T>(this: Sequence<T>, action: (index: number, value: T) => void) {
+    forEachIndexed<T>(this: Sequence<T>, action: (index: number, value: T) => unknown) {
         this.withIndex()
             .forEach(it => action(it.index, it.value));
     }
