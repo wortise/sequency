@@ -1,4 +1,3 @@
-import {asSelector} from "./internal";
 import Comparator from "./Comparator";
 
 /**

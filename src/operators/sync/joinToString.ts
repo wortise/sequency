@@ -1,6 +1,6 @@
 import {Sequence} from "../../sequency";
 
-export default interface JoinConfig<T> {
+export interface JoinConfig<T> {
     value?: string;
     separator?: string;
     prefix?: string;

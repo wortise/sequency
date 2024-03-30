@@ -6,6 +6,11 @@ import {Sequence, SequenceImpl} from "./Sequence";
 
 export {Sequence, Sequence as default} from "./Sequence";
 export {AsyncSequence} from "./AsyncSequence";
+export {default as Comparator} from "./Comparator";
+export {default as ComparatorFactory} from "./ComparatorFactory";
+export {default as IndexedValue} from "./IndexedValue";
+export {JoinConfig as JoinToStringConfig} from "./operators/sync/joinToString";
+export {JoinConfig as AsyncJoinToStringConfig} from "./operators/async/joinToString";
 
 /**
  * Create sequence of multiple arguments of an array of arguments
