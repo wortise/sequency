@@ -2,9 +2,9 @@
   "name": "sequency",
   "version": "0.20.0",
   "description": "Functional sequences for processing iterable data in JavaScript",
-  "main": "lib/Sequence.js",
+  "main": "lib/sequency.js",
   "umd:main": "lib-umd/sequency.js",
-  "typings": "lib/Sequence.d.ts",
+  "types": "lib/sequency.d.ts",
   "scripts": {
     "test": "jest",
     "watch": "jest --watch --notify",

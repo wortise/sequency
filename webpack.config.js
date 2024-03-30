@@ -5,8 +5,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 /** @type {webpack.Configuration} */
 module.exports = {
     entry: {
-        'sequency': './src/Sequence.ts',
-        'sequency.min': './src/Sequence.ts'
+        'sequency': './src/sequency.ts',
+        'sequency.min': './src/sequency.ts'
     },
     output: {
         path: path.resolve(__dirname, 'lib-umd'),
