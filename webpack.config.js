@@ -9,7 +9,7 @@ module.exports = {
         'sequency.min': './src/sequency.ts'
     },
     output: {
-        path: path.resolve(__dirname, 'lib-umd'),
+        path: path.resolve(__dirname, 'lib/umd'),
         filename: '[name].js',
         libraryTarget: 'umd',
         library: 'Sequency',
@@ -25,7 +25,7 @@ module.exports = {
             loader: 'ts-loader',
             options: {
                 transpileOnly: true,
-                configFile: 'tsconfig.json'
+                configFile: 'tsconfig.cjs.json'
             },
             exclude: /node_modules/
         }]

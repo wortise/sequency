@@ -2,9 +2,18 @@
   "name": "sequency",
   "version": "0.20.0",
   "description": "Functional sequences for processing iterable data in JavaScript",
-  "main": "lib/sequency.js",
-  "umd:main": "lib-umd/sequency.js",
-  "types": "lib/sequency.d.ts",
+  "main": "./lib/cjs/sequency.js",
+  "module": "./lib/esm/sequency.js",
+  "umd:main": "./lib/umd/sequency.js",
+  "types": "./lib/types/sequency.d.ts",
+  "exports": {
+    ".": {
+      "default": "./lib/cjs/sequency.js",
+      "require": "./lib/cjs/sequency.js",
+      "import": "./lib/esm/sequency.js",
+      "types": "./lib/types/sequency.d.ts"
+    }
+  },
   "scripts": {
     "test": "jest",
     "watch": "jest --watch --notify",
@@ -15,8 +24,8 @@
     "docs-publish": "yarn docs && touch docs/.nojekyll && gh-pages -d docs -t",
     "bundle": "webpack --mode production && size-limit",
     "bundle-browsertest": "open ./test/browsertest-lib.html",
-    "clean": "rimraf lib && rimraf lib-umd && rimraf docs && rimraf coverage",
-    "compile": "node_modules/.bin/tsc",
+    "clean": "rimraf lib && rimraf docs && rimraf coverage",
+    "compile": "node_modules/.bin/tsc -b tsconfig.json tsconfig.esm.json tsconfig.cjs.json",
     "build": "yarn clean && yarn lint && yarn compile && yarn test && yarn bundle",
     "prepublishOnly": "yarn build"
   },
@@ -32,7 +41,6 @@
   },
   "files": [
     "lib",
-    "lib-umd",
     "LICENSE"
   ],
   "engines": {
@@ -61,16 +69,24 @@
       "js"
     ],
     "transform": {
-      "^.+\\.ts$": "ts-jest"
+      "^.+\\.ts$": [
+        "ts-jest",
+        {
+          "tsconfig": "./tsconfig.esm.json",
+          "useESM": true
+        }
+      ]
     },
     "testMatch": [
       "**/test/**/*.ts"
     ],
-    "testURL": "http://localhost/"
+    "testEnvironmentOptions": {
+      "url": "http://localhost/"
+    }
   },
   "size-limit": [
     {
-      "path": "lib-umd/sequency.min.js",
+      "path": "lib/umd/sequency.min.js",
       "limit": "10 KB"
     }
   ],
