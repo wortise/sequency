@@ -7,9 +7,13 @@ describe("asIterable", () => {
             .asIterable();
 
         const iterator = iterable[Symbol.iterator]();
-        expect(iterator.next().value).toBe(1);
-        expect(iterator.next().value).toBe(3);
-        expect(iterator.next().value).toBe(5);
+        const results = [1, 3, 5];
+
+        for (let i = 0; i < results.length; i++) {
+            const result = iterator.next();
+            expect(result.value).toBe(results[i]);
+        }
+
         expect(iterator.next().done).toBe(true);
     });
 });

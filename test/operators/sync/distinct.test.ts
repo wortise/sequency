@@ -14,6 +14,7 @@ describe("distinct", () => {
         const result = range(1, 1_000_000)
             .distinct()
             .toArray();
+
         expect(result.length).toBe(1_000_000);
         const took = Date.now() - t0;
         console.log("Took %s ms", took);

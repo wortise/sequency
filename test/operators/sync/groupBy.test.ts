@@ -7,7 +7,7 @@ describe("groupBy", () => {
         const c = {k: 3, v: 33} as const;
         const d = {k: 2, v: 222} as const;
 
-        const map = sequenceOf<{k: (typeof a)["k"] | (typeof b)["k"] | (typeof c)["k"] | (typeof d)["k"], v: number}>(a, b, c, d)
+        const map = sequenceOf<{k: (typeof a | typeof b | typeof c | typeof d)["k"], v: number}>(a, b, c, d)
             .groupBy(it => it.k);
 
         expect(map).toEqual(

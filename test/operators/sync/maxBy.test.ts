@@ -10,7 +10,7 @@ describe("maxBy", () => {
 
     it("should return null on empty sequence", () => {
         const num = emptySequence()
-            .maxBy(() => void(0));
+            .maxBy(() => 0);
 
         expect(num).toBeNull();
     });
