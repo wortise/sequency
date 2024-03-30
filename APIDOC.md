@@ -7,14 +7,16 @@ Download the [latest release](https://github.com/winterbe/sequency/releases) fro
 ```bash
 npm install sequency
 ```
+
 or
+
 ```bash
 yarn add sequency
 ```
 
-### How Sequency works
+## How Sequency works
 
-Sequency is centered around the interface [Sequence](https://winterbe.github.io/sequency/interfaces/Sequence.html) to process any kind of iterable data such as arrays, maps and sets. 
+Sequency is centered around the interface [Sequence](https://winterbe.github.io/sequency/interfaces/Sequence.html) to process any kind of iterable data such as arrays, maps and sets.
 
 The interface `Sequence` provides a fluent functional API consisting of intermediate and terminal operations. Intermediate functions return a new sequence, thus enabling method chaining while terminal functions return an arbitrary result. You can explore all available `Sequence` operations by navigating to the [Sequence](https://winterbe.github.io/sequency/interfaces/Sequence.html) interface.
 
@@ -46,6 +48,10 @@ const result = asSequence(numbers)
 // result: [5, 4, 3]
 ```
 
-### License
+## Asynchronous sequences
+
+Sequency supports promises via the dedicated interface [AsyncSequence](https://winterbe.github.io/sequency/interfaces/AsyncSequence.html). This requires you to await the result of terminal functions.
+
+## License
 
 MIT © [winterbe](https://twitter.com/winterbe_)
