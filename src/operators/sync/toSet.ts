@@ -10,7 +10,7 @@ export class ToSet {
      * @returns {Set<T>}
      */
     toSet<T>(this: Sequence<T>, set?: Set<T>): Set<T> {
-        const result = set || new Set();
+        const result = set ?? new Set();
         for (let item = this.iterator.next(); !item.done; item = this.iterator.next()) {
             result.add(item.value);
         }

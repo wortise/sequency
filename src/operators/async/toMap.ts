@@ -10,7 +10,7 @@ export class ToMap {
      * @returns {Promise<Map<K, V>>}
      */
     async toMap<K, V>(this: AsyncSequence<[K, V]>, map?: Map<K, V>): Promise<Map<K, V>> {
-        const result = map || new Map<K, V>();
+        const result = map ?? new Map<K, V>();
         for (let item = await this.iterator.next(); !item.done; item = await this.iterator.next()) {
             const pair = item.value;
             const key = pair[0];

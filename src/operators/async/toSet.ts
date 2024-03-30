@@ -10,7 +10,7 @@ export class ToSet {
      * @returns {Promise<Set<T>>}
      */
     async toSet<T>(this: AsyncSequence<T>, set?: Set<T>): Promise<Set<T>> {
-        const result = set || new Set();
+        const result = set ?? new Set();
         for (let item = await this.iterator.next(); !item.done; item = await this.iterator.next()) {
             result.add(item.value);
         }

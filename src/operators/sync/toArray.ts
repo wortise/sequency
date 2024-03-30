@@ -10,7 +10,7 @@ export class ToArray {
      * @returns {T[]}
      */
     toArray<T>(this: Sequence<T>, array?: T[]): T[] {
-        const result: T[] = array || [];
+        const result: T[] = array ?? [];
         for (let item = this.iterator.next(); !item.done; item = this.iterator.next()) {
             result.push(item.value);
         }

@@ -10,7 +10,7 @@ export class ToMap {
      * @returns {Map<K, V>}
      */
     toMap<K, V>(this: Sequence<[K, V]>, map?: Map<K, V>): Map<K, V> {
-        const result = map || new Map<K, V>();
+        const result = map ?? new Map<K, V>();
         for (let item = this.iterator.next(); !item.done; item = this.iterator.next()) {
             const pair = item.value;
             const key = pair[0];

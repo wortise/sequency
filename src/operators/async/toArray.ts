@@ -10,7 +10,7 @@ export class ToArray {
      * @returns {Promise<T[]>}
      */
     async toArray<T>(this: AsyncSequence<T>, array?: T[]): Promise<T[]> {
-        const result: T[] = array || [];
+        const result: T[] = array ?? [];
         for (let item = await this.iterator.next(); !item.done; item = await this.iterator.next()) {
             result.push(item.value);
         }
