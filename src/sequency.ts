@@ -12,8 +12,10 @@ export {AsyncSequence} from "./AsyncSequence";
  * @param {...T} args Arguments
  * @returns Sequence
  * @example
- * let seq1 = sequenceOf(1, 2, 3); // Sequence<number>
- * let seq2 = sequenceOf([1, 2, 3]); // Sequence<number>
+ * // Sequence<number>
+ * sequenceOf(1, 2, 3);
+ * // Sequence<number>
+ * sequenceOf([1, 2, 3]);
  */
 export function sequenceOf<T>(...args: T[]): Sequence<T> {
     return asSequence(args);
@@ -24,8 +26,8 @@ export function sequenceOf<T>(...args: T[]): Sequence<T> {
  * @param {...T} args Arguments
  * @returns AsyncSequence
  * @example
- * asyncSequenceOf(1, 2, 3); // Sequence<number>
- * asyncSequenceOf([1, 2, 3]); // Sequence<number>
+ * asyncSequenceOf(1, 2, 3); // AsyncSequence<number>
+ * asyncSequenceOf([1, 2, 3]); // AsyncSequence<number>
  */
 export function asyncSequenceOf<T>(...args: T[]): AsyncSequence<T> {
     return asAsyncSequence<T>(args);
@@ -84,15 +86,15 @@ export function asSequence<T>(iterable: Iterable<T>): Sequence<T> {
  * @param {Iterable<T> | AsyncIterable<T>} iterable Iterable object / generator
  * @returns AsyncSequence
  * @example
- * // Sequence<number> => 1, 2, 3
+ * // AsyncSequence<number> => 1, 2, 3
  * asAsyncSequence([1, 2, 3]);
- * // Sequence<number> => 1, 2, 3
+ * // AsyncSequence<number> => 1, 2, 3
  * asAsyncSequence(new Set([1, 2, 3]));
- * // Sequence<[string, number]> => ["a", 1], ["b", 2], ["c", 3]
+ * // AsyncSequence<[string, number]> => ["a", 1], ["b", 2], ["c", 3]
  * asAsyncSequence(new Map([["a", 1], ["b", 2], ["c", 3]]));
- * // Sequence<string> => "a", "b", "c"
+ * // AsyncSequence<string> => "a", "b", "c"
  * asAsyncSequence("abc");
- * // Sequence<number> => 0, 1, 2, 3, ...
+ * // AsyncSequence<number> => 0, 1, 2, 3, ...
  * asAsyncSequence((async function* () {
  *     let i = 0;
  *     while (true) {
@@ -122,6 +124,7 @@ export function asAsyncSequence<T>(iterable: Iterable<T> | AsyncIterable<T>): As
  * @param {Iterator<T>} iterator Iterator
  * @returns Sequence
  * @example
+ * // Sequence<unknown>
  * createSequence({
  *     next(value) {
  *         return {done: true, value: null};
@@ -137,6 +140,7 @@ export function createSequence<T>(iterator: Iterator<T>): Sequence<T> {
  * @param {AsyncIterator<T>} iterator AsyncIterator
  * @returns AsyncSequence
  * @example
+ * // Sequence<unknown>
  * createAsyncSequence({
  *     async next(value) {
  *         return {done: true, value: null};
