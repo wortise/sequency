@@ -24,7 +24,7 @@ describe("joinToString", () => {
 
     it("should join to string using transform function", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .joinToString({transform: num => Promise.resolve(`a${num}`)});
+            .joinToString({transform: async num => `a${num}`});
 
         expect(result).toBe("a1, a2, a3");
     });

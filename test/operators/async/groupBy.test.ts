@@ -8,7 +8,7 @@ describe("groupBy", () => {
         const d = {k: 2, v: 222} as const;
 
         const map = await asyncSequenceOf<{k: (typeof a | typeof b | typeof c | typeof d)["k"], v: number}>(a, b, c, d)
-            .groupBy(it => Promise.resolve(it.k));
+            .groupBy(async it => it.k);
 
         expect(map).toEqual(
             new Map([

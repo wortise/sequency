@@ -9,7 +9,7 @@ describe("count", () => {
 
     it("should evaluate predicate and count results", async () => {
         const num = await asyncSequenceOf(1, 2, 3)
-            .count(it => Promise.resolve(it > 1));
+            .count(async it => it > 1);
 
         expect(num).toBe(2);
     });

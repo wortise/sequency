@@ -7,7 +7,7 @@ describe("associateBy", () => {
         const c = {k: 3, v: 33};
 
         const map = await asyncSequenceOf(a, b, c)
-            .associateBy(it => Promise.resolve(it.k));
+            .associateBy(async it => it.k);
 
         expect(map).toEqual(
             new Map([
@@ -42,8 +42,8 @@ describe("associateBy", () => {
 
         const map = await asyncSequenceOf(a, b, c)
             .associateBy(
-                it => Promise.resolve(it.k),
-                it => Promise.resolve(it.v)
+                async it => it.k,
+                async it => it.v
             );
 
         expect(map).toEqual(
@@ -63,7 +63,7 @@ describe("associateBy", () => {
         const map = await asyncSequenceOf(a, b, c)
             .associateBy(
                 "k",
-                it => Promise.resolve(it.v)
+                async it => it.v
             );
 
         expect(map).toEqual(
@@ -83,8 +83,8 @@ describe("associateBy", () => {
 
         const map = await asyncSequenceOf(a, b, c, d)
             .associateBy(
-                it => Promise.resolve(it.k),
-                it => Promise.resolve(it.v)
+                async it => it.k,
+                async it => it.v
             );
 
         expect(map).toEqual(

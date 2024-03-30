@@ -22,7 +22,7 @@ describe("single", () => {
 
     it("should evaluate predicate and return single element", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .single(it => Promise.resolve(it > 2));
+            .single(async it => it > 2);
 
         expect(result).toBe(3);
     });
@@ -30,14 +30,14 @@ describe("single", () => {
     it("should evaluate predicate and throw with more than one element", () => {
         expect(
             () => asyncSequenceOf(1, 2)
-                .single(it => Promise.resolve(it > 0))
+                .single(async it => it > 0)
         ).rejects.toThrow("Expect single element");
     });
 
     it("should evaluate predicate and throw with zero elements", () => {
         expect(
             () => asyncSequenceOf(1, 2, 3)
-                .single(it => Promise.resolve(it > 3))
+                .single(async it => it > 3)
         ).rejects.toThrow("No such element");
     });
 });

@@ -10,7 +10,7 @@ describe("findLast", () => {
 
     it("should return null on empty sequence", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .filter(it => Promise.resolve(it > 3))
+            .filter(async it => it > 3)
             .findLast();
 
         expect(result).toBeNull();
@@ -18,7 +18,7 @@ describe("findLast", () => {
 
     it("should return last element matching predicate", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .findLast(it => Promise.resolve(it > 1));
+            .findLast(async it => it > 1);
 
         expect(result).toBe(3);
     });

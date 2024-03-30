@@ -10,8 +10,7 @@ describe("examples", () => {
     });
 
     it("should generate sequence of fibonacci numbers", () => {
-        const nums =
-            generateSequence([0, 1], ([a, b]) => [b, a + b])
+        const nums = generateSequence([0, 1], ([a, b]) => [b, a + b])
                 .map(([a, _]) => a)
                 .take(10)
                 .toArray();

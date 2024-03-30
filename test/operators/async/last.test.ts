@@ -3,7 +3,7 @@ import {asyncSequenceOf} from "../../../src/sequency";
 describe("last", () => {
     it("should return last element of sequence", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .filter(it => Promise.resolve(it > 1))
+            .filter(async it => it > 1)
             .last();
 
         expect(result).toBe(3);
@@ -12,14 +12,14 @@ describe("last", () => {
     it("should throw error on empty sequence", async () => {
         expect(
             () => asyncSequenceOf(1, 2, 3)
-                .filter(it => Promise.resolve(it > 3))
+                .filter(async it => it > 3)
                 .last()
         ).rejects.toThrow("No such element");
     });
 
     it("should return last element matching predicate", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .last(it => Promise.resolve(it > 1));
+            .last(async it => it > 1);
 
         expect(result).toBe(3);
     });

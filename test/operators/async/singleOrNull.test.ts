@@ -24,21 +24,21 @@ describe("singleOrNull", () => {
 
     it("should evaluate predicate and return single element", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .singleOrNull(it => Promise.resolve(it > 2));
+            .singleOrNull(async it => it > 2);
 
         expect(result).toBe(3);
     });
 
     it("should evaluate predicate and return null with more than one element", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .singleOrNull(it => Promise.resolve(it > 1));
+            .singleOrNull(async it => it > 1);
 
         expect(result).toBeNull();
     });
 
     it("should evaluate predicate and return null with zero elements", async () => {
         const result = await asyncSequenceOf(1, 2, 3)
-            .singleOrNull(it => Promise.resolve(it > 3));
+            .singleOrNull(async it => it > 3);
 
         expect(result).toBeNull();
     });
