@@ -1,5 +1,5 @@
 {
-  "name": "sequency",
+  "name": "@wortise/sequency",
   "version": "0.20.0",
   "description": "Functional sequences for processing iterable data in JavaScript",
   "main": "./lib/cjs/sequency.js",
